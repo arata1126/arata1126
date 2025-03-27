@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ログインページ</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        #login-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-form">
+        <h3>いらっしゃいませ</h3>
+        <p>このサイトは非公式二次創作サイトです</p>
+        <p>原作者様、版権元等とは一切関係ありません。閲覧も自己責任でお願いします。</p>
+        <p>鍵は軍曹のお誕生日を4桁です。</p>
+        <input type="password" id="password-input" placeholder="パスワードを入力">
+        <button onclick="checkPassword()">送信</button>
+        <p id="error-message" style="display: none;">パスワードが違います</p>
+    </div>
+    
+    <script>
+        function checkPassword() {
+            const passwordInput = document.getElementById("password-input").value;
+            const errorMessage = document.getElementById("error-message");
+            
+            // パスワードの定義（複数可能）
+            const passwords = {
+                "0401": "secret-page1.html",   // パスワード1の遷移先
+                "pass2": "secret-page2.html",   // パスワード2の遷移先
+                "pass3": "secret-page3.html"    // パスワード3の遷移先
+            };
+            
+            // パスワードチェック
+            if (passwords[passwordInput]) {
+                // 正しいパスワードの場合、対応するページにリダイレクト
+                window.location.href = passwords[passwordInput];
+            } else {
+                // パスワードが違う場合
+                errorMessage.style.display = "block";
+            }
+        }
+        
+        // エンターキーでも送信できるようにする
+        document.getElementById("password-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
