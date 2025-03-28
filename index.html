@@ -17,31 +17,34 @@
         
         #login-form {
             background-color: white;
-            padding: 30px;
+            padding: 50px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
+            width: 90%;
+            max-width: 600px;
         }
         
         input {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
+            font-size: 18px;
         }
         
         button {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 18px;
         }
         
         button:hover {
@@ -52,13 +55,22 @@
             color: red;
             margin-top: 10px;
         }
+
+        @media (max-width: 600px) {
+    #login-form {
+        width: 100%;
+        max-width: none; /* 制限を解除 */
+        padding: 60px;
+    }
+}
     </style>
 </head>
 <body>
     <div id="login-form">
         <h3>いらっしゃいませ</h3>
         <p>このサイトは非公式二次創作サイトです</p>
-        <p>原作者様、版権元等とは一切関係ありません。閲覧も自己責任でお願いします。</p>
+        <p>原作者様、版権元等とは一切関係ありません。</p>
+        <p>閲覧も自己責任でお願いします。</p>
         <p>鍵は軍曹のお誕生日を4桁です。</p>
         <input type="password" id="password-input" placeholder="パスワードを入力">
         <button onclick="checkPassword()">送信</button>
